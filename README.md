@@ -7,6 +7,7 @@ Usage
 ===========
 Just launch Main.java.
 Sudoku are described with a line representation
+<pre>
 +-------+-------+-------+
 | 7 . . | . . . | 9 4 . |
 | . . 5 | 7 . 4 | . . 1 |
@@ -20,8 +21,8 @@ Sudoku are described with a line representation
 | 2 6 9 | . . . | . 5 3 |
 | 1 . . | . 5 . | . . . |
 +-------+-------+-------+
-
+</pre>
 becomes 
-
+<pre>
 "7.....94...57.4..1....3..8.9.8..7..4..........3.5.1.9....2...6.269....531...5...."
-
+</pre>
