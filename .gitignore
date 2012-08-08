@@ -1,0 +1,6 @@
+# add eclipse project files
+.classpath
+.project
+
+# eclipse .class directory
+bin/
