@@ -7,11 +7,9 @@ import java.util.List;
 import org.bm.sudoku2.model.IBox;
 import org.bm.sudoku2.model.IGrid;
 import org.bm.sudoku2.model.RowCol;
-import org.bm.sudoku2.model.UpdatedValue;
 import org.bm.sudoku2.model.Value;
-import org.bm.sudoku2.model.ValueChangedListener;
 
-public class Grid implements IGrid, ValueChangedListener {
+public class Grid implements IGrid {
 	private IGrid parent;
 	private IGrid[] children;
 	private int childId;
@@ -350,10 +348,4 @@ public class Grid implements IGrid, ValueChangedListener {
 		return Collections.unmodifiableList(values);
 	}
 
-	@Override
-	public void valueChanged(UpdatedValue updatedValue) {
-		System.out.println(this);
-	}
-
-	
 }

@@ -1,19 +1,12 @@
 package org.bm.sudoku2.model.impl;
 
-import java.util.List;
-
-import javax.swing.event.EventListenerList;
-
 import org.bm.sudoku2.model.IEngine;
 import org.bm.sudoku2.model.IGrid;
 import org.bm.sudoku2.model.RowCol;
-import org.bm.sudoku2.model.UpdatedValue;
 import org.bm.sudoku2.model.Value;
-import org.bm.sudoku2.model.ValueChangedListener;
 import org.bm.sudoku2.model.exception.NoSolutionFoundException;
 
-@SuppressWarnings("unused")
-public class Engine implements IEngine, ValueChangedListener {
+public class Engine implements IEngine {
 	private long startTime;
 	private long endTime;
 	private long nbIterations;
@@ -29,7 +22,7 @@ public class Engine implements IEngine, ValueChangedListener {
 			modified = false;
 			modified |= current.updatePossibleValues();
 			modified |= current.shrinkPossibleValues();
-			
+
 			if (!modified) {
 				RowCol bestBox = current.getBestBox();
 				if (!bestBox.isValid()) {
@@ -70,7 +63,7 @@ public class Engine implements IEngine, ValueChangedListener {
 			}
 		} while (!current.isFinished());
 		endTime = System.currentTimeMillis();
-		
+
 		return current;
 	}
 
@@ -91,13 +84,13 @@ public class Engine implements IEngine, ValueChangedListener {
 
 	@Override
 	public IGrid parse(String input) {
-		
-		if(input.length() != 81) {
+
+		if (input.length() != 81) {
 			throw new IllegalArgumentException("input String must be 81 chars long.");
 		}
-		
+
 		IGrid g = new Grid();
-		
+
 		char[] datas = input.toCharArray();
 		for (int r = 0; r < 9; r++) {
 			for (int c = 0; c < 9; c++) {
@@ -108,34 +101,10 @@ public class Engine implements IEngine, ValueChangedListener {
 				if ('.' == car || '0' == car) {
 					g.set(rc, Value.from(0));
 				} else {
-					g.set(rc, Value.from(Integer.parseInt(Character.toString(car))) );
+					g.set(rc, Value.from(Integer.parseInt(Character.toString(car))));
 				}
 			}
 		}
 		return g;
-	}
-	
-	@Override
-	public void valueChanged(UpdatedValue updatedValue) {
-		fireValueChanged(updatedValue);
-	}
-	
-	EventListenerList listeners = new EventListenerList();
-
-	@Override
-	public void addValueChangedListener(ValueChangedListener listener) {
-		listeners.add(ValueChangedListener.class, listener);
-	}
-
-	@Override
-	public void removeValueChangedListener(ValueChangedListener listener) {
-		listeners.remove(ValueChangedListener.class, listener);
-	}
-
-	public void fireValueChanged(UpdatedValue updatedValue) {
-		ValueChangedListener[] valueChangedListeners = listeners.getListeners(ValueChangedListener.class);
-		for (ValueChangedListener vcl : valueChangedListeners) {
-			vcl.valueChanged(updatedValue);
-		}
 	}
 }

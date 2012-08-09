@@ -34,10 +34,5 @@ public interface IEngine {
 	 * @return
 	 */
 	IGrid parse(String input);
-	
-	void addValueChangedListener(ValueChangedListener listener);
-
-	void removeValueChangedListener(ValueChangedListener listener);
-	
-	
+		
 }
