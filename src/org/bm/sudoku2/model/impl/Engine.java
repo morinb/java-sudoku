@@ -12,6 +12,7 @@ import org.bm.sudoku2.model.Value;
 import org.bm.sudoku2.model.ValueChangedListener;
 import org.bm.sudoku2.model.exception.NoSolutionFoundException;
 
+@SuppressWarnings("unused")
 public class Engine implements IEngine, ValueChangedListener {
 	private long startTime;
 	private long endTime;

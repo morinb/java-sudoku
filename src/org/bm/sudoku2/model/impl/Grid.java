@@ -2,11 +2,7 @@ package org.bm.sudoku2.model.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import javax.swing.event.EventListenerList;
 
 import org.bm.sudoku2.model.IBox;
 import org.bm.sudoku2.model.IGrid;

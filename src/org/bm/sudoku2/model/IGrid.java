@@ -3,6 +3,7 @@ package org.bm.sudoku2.model;
 import java.util.List;
 
 
+@SuppressWarnings("unused")
 public interface IGrid {
 
 	/**
