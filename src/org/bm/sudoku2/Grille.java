@@ -42,7 +42,9 @@ public class Grille {
 		}
 	}
 
-	public static final Integer[] values = new Integer[] { new Integer(0), new Integer(1), new Integer(2), new Integer(3), new Integer(4), new Integer(5), new Integer(6), new Integer(7), new Integer(8), new Integer(9), };
+	public static final Integer[] values = new Integer[] { new Integer(0), new Integer(1), new Integer(2),
+			new Integer(3), new Integer(4), new Integer(5), new Integer(6), new Integer(7), new Integer(8),
+			new Integer(9), };
 	// Case[ligne][colonne]
 	protected Case[][] grille = new Case[9][9];
 
@@ -315,7 +317,7 @@ public class Grille {
 		boolean modified = false;
 		for (int l = 0; l < grille.length; l++) {
 			for (int c = 0; c < grille[0].length; c++) {
-				grille[l][c].utiliserValeurSure();
+				modified |= grille[l][c].utiliserValeurSure();
 			}
 		}
 
@@ -353,16 +355,13 @@ public class Grille {
 
 		return oneD;
 	}
-/*
-	private String listToString(List<Integer> list) {
-		StringBuilder sb = new StringBuilder();
-		for (Integer i : list) {
-			sb.append(i).append(' ');
-		}
 
-		return sb.toString();
-	}
-*/
+	/*
+	 * private String listToString(List<Integer> list) { StringBuilder sb = new
+	 * StringBuilder(); for (Integer i : list) { sb.append(i).append(' '); }
+	 * 
+	 * return sb.toString(); }
+	 */
 	public boolean isValid() {
 		boolean valid = true;
 		// verifie aussi qu'il n'y a pas 2fois le meme chiffre dans la meme
@@ -377,13 +376,15 @@ public class Grille {
 
 			Case[] colonne = getColonne(i);
 			valid &= validate(colonne);
-			if (!valid) {System.out.println(" dans la colonne");
+			if (!valid) {
+				System.out.println(" dans la colonne");
 				return false;
 			}
 
 			Case[] bloc = toOneDimensionList(getBloc(i));
 			valid &= validate(bloc);
-			if (!valid) {System.out.println(" dans le bloc");
+			if (!valid) {
+				System.out.println(" dans le bloc");
 				return false;
 			}
 		}
@@ -403,9 +404,9 @@ public class Grille {
 		}
 
 		// verifies que les vals soient au maximum a 1
-		for(int i = 0 ; i < vals.length ; i++) {
+		for (int i = 0; i < vals.length; i++) {
 			if (vals[i] > 1) {
-				System.out.print(afficherLigne(ligne)+" invalide : plusieurs "+Grille.values[i+1].toString());
+				System.out.print(afficherLigne(ligne) + " invalide : plusieurs " + Grille.values[i + 1].toString());
 				return false;
 			}
 		}
